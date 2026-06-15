@@ -18,7 +18,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -29,7 +28,7 @@ import java.util.Locale
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun listScreen(
+fun ListScreen(
     navController: NavController,
     viewModel: ItemViewModel = hiltViewModel()
 ) {

@@ -16,12 +16,16 @@ object CsvUtils {
         return buildString {
 
             if (includeHeader) {
-                append("Cliente,Item,Quantidade,Preco\n")
+                append(" Cliente, Item, Quantidade, Preco, Total\n")
             }
 
             items.forEach { item ->
                 append(
-                    "${item.customer}," + "${item.itemName}," + "${item.quantity}," + "${item.price}\n"
+                    "${item.customer},"
+                            + "${item.itemName},"
+                            + "${item.quantity},"
+                            + "${item.price}, "
+                            + " ${item.price * item.quantity}\n"
                 )
             }
         }

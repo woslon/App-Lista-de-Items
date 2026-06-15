@@ -8,7 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.my_list_itens.ui.theme.My_list_ItensTheme
-import com.example.my_list_itens.ui.screen.listScreen
+import com.example.my_list_itens.ui.screen.ListScreen
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.NavController
 import com.example.my_list_itens.navigation.AppNavigation
