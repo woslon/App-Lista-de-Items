@@ -1,6 +1,6 @@
 package com.example.my_list_itens.ui.screen
 
-import android.R
+import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,10 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material.icons.filled.ChevronLeft
-import androidx.compose.material.icons.filled.ChevronRight
-import androidx.compose.material.icons.filled.FileDownload
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Share
@@ -49,6 +46,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.my_list_itens.ui.viewmodel.ItemViewModel
 import com.example.my_list_itens.utils.CsvUtils
+import com.example.my_list_itens.utils.Alert
 import java.io.File
 import java.text.NumberFormat
 import java.util.Locale
@@ -205,6 +203,8 @@ fun ExportCsvScreen(
 
             Button(
                 onClick = {
+
+                   context.Alert("gerando arquivo CSV")
 
                     val csv = CsvUtils.generateCsv(
                         items = items,
