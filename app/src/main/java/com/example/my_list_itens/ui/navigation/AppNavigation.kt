@@ -1,4 +1,4 @@
-package com.example.my_list_itens.navigation
+package com.example.my_list_itens.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost

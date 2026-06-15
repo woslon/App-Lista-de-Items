@@ -11,4 +11,5 @@ data class Item(
     val itemName: String,
     val quantity: Int,
     val price: Double,
+    val date: String
 )

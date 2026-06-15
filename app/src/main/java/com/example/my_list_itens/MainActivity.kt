@@ -7,9 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.my_list_itens.ui.theme.My_list_ItensTheme
-import com.example.my_list_itens.ui.screen.ListScreen
 import dagger.hilt.android.AndroidEntryPoint
-import com.example.my_list_itens.navigation.AppNavigation
+import com.example.my_list_itens.ui.navigation.AppNavigation
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -30,6 +29,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     My_list_ItensTheme {
-       // ListScreen()
+
     }
 }

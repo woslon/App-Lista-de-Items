@@ -1,6 +1,5 @@
 package com.example.my_list_itens.ui.screen
 
-import android.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,6 +22,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.my_list_itens.data.local.entity.Item
 import com.example.my_list_itens.ui.viewmodel.ItemViewModel
+import com.example.my_list_itens.utils.getToday
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -62,7 +62,7 @@ fun ListScreen(
                             navController.navigate("export_csv")
                         },
                         shape = RoundedCornerShape(12.dp),
-                        color = Color.White.copy(alpha = 0.1f), // opacidade
+                        color = Color.White.copy(alpha = 0.1f),
                         tonalElevation = 0.dp
                     ) {
                         Row(
@@ -298,7 +298,8 @@ fun ListScreen(
                                                     customer = customer,
                                                     itemName = itemName,
                                                     quantity = quantity.toIntOrNull() ?: 0,
-                                                    price = price.replace(",", ".").toDoubleOrNull() ?: 0.0
+                                                    price = price.replace(",", ".").toDoubleOrNull() ?: 0.0,
+                                                    date = getToday()
                                                 )
                                             )
                                         } else {
@@ -307,7 +308,8 @@ fun ListScreen(
                                                     customer = customer,
                                                     itemName = itemName,
                                                     quantity = quantity.toIntOrNull() ?: 0,
-                                                    price = price.replace(",", ".").toDoubleOrNull() ?: 0.0
+                                                    price = price.replace(",", ".").toDoubleOrNull() ?: 0.0,
+                                                    date = getToday()
                                                 )
                                             )
                                         }

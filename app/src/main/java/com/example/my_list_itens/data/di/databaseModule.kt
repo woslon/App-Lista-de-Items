@@ -1,14 +1,14 @@
 package com.example.my_list_itens.di
 
-import android.content.Context
-import androidx.room.Room
 import com.example.my_list_itens.data.local.database.AppDatabase
 import com.example.my_list_itens.data.local.dao.itemDao.ItemDao
+import android.content.Context
+import androidx.room.Room
+import javax.inject.Singleton
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 import dagger.hilt.android.qualifiers.ApplicationContext
 
 @Module
