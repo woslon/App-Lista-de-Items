@@ -1,5 +1,6 @@
 package com.example.my_list_itens.ui.screen
 
+import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,8 +12,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBackIosNew
-import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.automirrored.filled.ArrowLeft
+import androidx.compose.material.icons.automirrored.filled.ArrowRight
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Button
@@ -48,14 +49,13 @@ import com.example.my_list_itens.ui.viewmodel.ItemViewModel
 import com.example.my_list_itens.ui.viewmodel.HistoryViewModel
 import com.example.my_list_itens.utils.CsvUtils
 import com.example.my_list_itens.utils.Alert
-import java.io.File
 import java.text.NumberFormat
 import java.time.LocalDate
 import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ExportCsvScreen(
+fun ExportScreen(
     navController: NavController,
 
 ) {
@@ -71,7 +71,7 @@ fun ExportCsvScreen(
     }
 
     var exportedFile by remember {
-        mutableStateOf<File?>(null)
+        mutableStateOf<Uri?>(null)
     }
 
     val items by itemViewModel.getAll()
@@ -104,7 +104,7 @@ fun ExportCsvScreen(
                         }
                     ) {
                         Icon(
-                            imageVector = Icons.Default.ArrowBackIosNew,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowLeft,
                             contentDescription = "Voltar",
                             tint = Color.White
                         )
@@ -117,7 +117,7 @@ fun ExportCsvScreen(
                         onClick = { navController.navigate("history") }
                     ) {
                         Icon(
-                            imageVector = Icons.Default.MoreVert,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowRight,
                             contentDescription = "Mais opções",
                             tint = Color.White
                         )
@@ -209,8 +209,8 @@ fun ExportCsvScreen(
                 onClick = {
 
                     context.Alert(
-                        title = "Atenção !",
-                        msg = "Gerando arquivo CSV..."
+                        msg = "Gerando arquivo CSV.",
+                        title = " Aguarde! ",
                     )
 
                     val csv = CsvUtils.generateCsv(
@@ -218,17 +218,19 @@ fun ExportCsvScreen(
                         includeHeader = includeHeader
                     )
 
-                    val file = CsvUtils.saveCsv(
+
+                    val uri = CsvUtils.saveCsv(
                         context = context,
                         fileName = fileName,
                         content = csv
                     )
 
-                    exportedFile = file
+                    exportedFile =  uri
 
                     historyViewModel.add(
                         History(
                             fileName = "$fileName.csv",
+                            fileUri = uri.toString(),
                             date = LocalDate.now().toString(),
                             totalItens = items.size
                         )
@@ -284,12 +286,17 @@ fun ExportCsvScreen(
 
             OutlinedButton(
                 onClick = {
+                    if( exportedFile === null ){
+                        context.Alert(
+                            msg = "Gere o arquivo antes de compartilhar.",
+                            title = "Ops !",
 
-                    exportedFile?.let { file ->
+                            )
+                    }
 
+                    exportedFile?.let {uri ->
                         CsvUtils.shareCsv(
-                            context = context,
-                            file = file
+                            context = context, uri = uri
                         )
                     }
                 },

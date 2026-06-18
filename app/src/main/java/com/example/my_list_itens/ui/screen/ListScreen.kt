@@ -59,9 +59,9 @@ fun ListScreen(
 
                     Surface(
                         onClick = {
-                            navController.navigate("export_csv")
+                            navController.navigate( route = "export")
                         },
-                        shape = RoundedCornerShape(12.dp),
+                        shape = RoundedCornerShape( size = 12.dp),
                         color = Color.White.copy(alpha = 0.1f),
                         tonalElevation = 0.dp
                     ) {

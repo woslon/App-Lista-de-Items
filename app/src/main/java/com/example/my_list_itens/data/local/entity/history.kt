@@ -8,6 +8,7 @@ data class History(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val fileName: String,
+    val fileUri: String,
     val date: String,
     val totalItens: Int
 )

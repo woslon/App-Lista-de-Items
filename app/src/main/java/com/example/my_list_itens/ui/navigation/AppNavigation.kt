@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.my_list_itens.ui.screen.ExportCsvScreen
+import com.example.my_list_itens.ui.screen.ExportScreen
 import com.example.my_list_itens.ui.screen.HistoryScreen
 import com.example.my_list_itens.ui.screen.ListScreen
 
@@ -24,8 +24,8 @@ fun AppNavigation() {
             )
         }
 
-        composable("export_csv") {
-            ExportCsvScreen(
+        composable("export") {
+            ExportScreen(
                 navController = navController
             )
         }
